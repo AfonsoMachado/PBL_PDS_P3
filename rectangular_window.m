@@ -1,13 +1,14 @@
 % Quantidade de amostras da janela, arredondando a mesma para um número par
 % se necessário
-N = 20;
+N = 10;
 N = round_even(N);
 
 % Definido os intervalos de cada amostra
 [n, M] = window_interval(N);
 
 % Equação da Janela de Hamming
-window = (0.54 + 0.46*cos((2*pi*n)/N))';
+half_rect = ones(1, M/2);
+window = [flip(half_rect), ones, half_rect]';
 
 % Plot da janela de Hamming
 stem(n, window, '.');
