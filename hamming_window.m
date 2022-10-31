@@ -7,7 +7,7 @@ N = round_even(N);
 [n, M] = window_interval(N);
 
 % Equação da Janela de Hamming
-window = (0.54 - 0.46*cos((2*pi*n)/(N-1)));
+window = (0.54 - 0.46*cos((2*pi*n)/M));
 
 % Plot da janela de Hamming
 figure;
