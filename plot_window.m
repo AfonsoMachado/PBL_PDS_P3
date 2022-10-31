@@ -1,14 +1,15 @@
 function plot_window(window, samples)
+
     switch window
-        case 'Retangular'          
+        case 'Retangular'
             [win, n] = rectangular_window(samples);
-        case 'Hanning'          
+        case 'Hanning'
             [win, n] = hanning_window(samples);
-        case 'Hamming'       
+        case 'Hamming'
             [win, n] = hamming_window(samples);
-        case 'Blackman'   
+        case 'Blackman'
             [win, n] = blackman_window(samples);
-        case 'Bartlett'         
+        case 'Bartlett'
             [win, n] = bartlett_window(samples);
         otherwise
             disp('other value')
@@ -26,4 +27,3 @@ function plot_window(window, samples)
     ylabel('Amplitude');
     grid;
 end
-

@@ -2,6 +2,5 @@
 % amostra em números inteiros
 function [n, M] = window_interval(N)
     M = N - 1;
-    n = 0:1:N-1;
+    n = 0:1:N - 1;
 end
-
