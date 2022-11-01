@@ -21,7 +21,7 @@ function plot_window(window, samples)
 
     % Plot da janela
     figure;
-    stem(n, win, '.');
+    stem(win, '.');
     title(strcat(window, {' '}, "Window"));
     xlabel('Amostras');
     ylabel('Amplitude');
