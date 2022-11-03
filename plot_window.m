@@ -12,7 +12,7 @@ function plot_window(window, samples)
         case 'Bartlett'
             [win, n] = bartlett_window(samples);
         otherwise
-            disp('other value')
+            disp('Error')
     end
 
     % Plot da magnitude e fase
