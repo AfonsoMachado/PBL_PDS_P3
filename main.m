@@ -1,12 +1,17 @@
-% Frequencia de corte
+addpath('windows')
+addpath('filters')
+
 fc1 = 1750;
 fc2 = 2500;
-% Frequencia de amostragem
 fs = 8000;
-% Largura da banda de transição
 bandwidth = 500;
-% Amostras
+ripple = 0.1;
+attenuation = 60;
+
 M = 52;
+
+window = window_choice(attenuation);
+disp(window)
 
 % Obtendo as frequencia discretas, da banda de passagem, banda de rejeição
 % e de corte
