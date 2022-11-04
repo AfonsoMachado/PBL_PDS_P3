@@ -1,6 +1,6 @@
 function [window, M] = bartlett_window(discrete_bandwidth)
 
-    N = ceil(5.5 / (discrete_bandwidth / 2));
+    N = ceil(3.0 / (discrete_bandwidth / 2));
 
     % Quantidade de amostras da janela, arredondando a mesma para um número par
     % se necessário
