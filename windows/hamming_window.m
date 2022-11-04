@@ -1,4 +1,7 @@
-function [window, n] = hamming_window(N)
+function [window, M] = hamming_window(discrete_bandwidth)
+
+    N = ceil(3.3 / (discrete_bandwidth / 2));
+
     % Quantidade de amostras da janela, arredondando a mesma para um número par
     % se necessário
     N = round_even(N);

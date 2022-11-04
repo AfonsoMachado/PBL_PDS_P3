@@ -1,4 +1,7 @@
-function [window, n] = blackman_window(N)
+function [window, M] = blackman_window(discrete_bandwidth)
+
+    N = ceil(5.5 / (discrete_bandwidth / 2));
+
     % Quantidade de amostras da janela, arredondando a mesma para um número par
     % se necessário
     N = round_even(N);

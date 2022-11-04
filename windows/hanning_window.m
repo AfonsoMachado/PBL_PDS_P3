@@ -1,4 +1,7 @@
-function [window, n] = hanning_window(N)
+function [window, M] = hanning_window(discrete_bandwidth)
+
+    N = ceil(3.1 / (discrete_bandwidth / 2));
+
     % Quantidade de amostras da janela, arredondando a mesma para um número par
     % se necessário
     N = round_even(N);

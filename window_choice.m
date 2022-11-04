@@ -1,18 +1,17 @@
-function window = window_choice(attenuation)
+function [window, M] = window_choice(attenuation, discrete_bandwidth)
 
-    if attenuation <= 21
-        window='retangular';
+    if attenuation > 0 && attenuation <= 21
+        [window, M] = rectangular_window(discrete_bandwidth);
     elseif attenuation > 21 && attenuation <= 25
-        window='bartlett';
+        [window, M] = bartlett_window(discrete_bandwidth);
     elseif attenuation > 25 && attenuation <= 44
-        window='hanning';
+        [window, M] = hanning_window(discrete_bandwidth);
     elseif attenuation > 44 && attenuation <= 53
-        window='hamming';
+        [window, M] = hamming_window(discrete_bandwidth);
     elseif attenuation > 53 && attenuation <= 74
-        window='blackman';
+        [window, M] = blackman_window(discrete_bandwidth);
     else
-        window='error';
+        disp('error!')
     end
 
 end
-
