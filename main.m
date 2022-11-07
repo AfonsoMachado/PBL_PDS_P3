@@ -8,6 +8,7 @@ fs = 8000;
 transition_band_width = 500;
 ripple = 0.1;
 attenuation = 30;
+windowchoice = 'Auto (Padrão)';
 
 % Tipo do filtro
 % lowpass, highpass, bandpass, bandstop
@@ -21,9 +22,9 @@ filter_type = 'lowpass';
 if attenuation < 0 || attenuation > 74
     disp('Especificações não suportadas');
 else
-    
+
     % Definindo o tamanho de M e escolhendo a janela
-    [window, M, win_name] = window_choice(attenuation, discrete_bandwidth);
+    [window, M, win_name] = window_choice(attenuation, discrete_bandwidth, windowchoice);
 
     n = 0:1:M;
 
