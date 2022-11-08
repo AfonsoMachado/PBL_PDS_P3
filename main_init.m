@@ -1,14 +1,14 @@
-function main_init(FC1, FC2, FS, TBANDWITH, RIPPLE, ATT, FTYPE, WINDOW)
+function main_init(FC1, FC2, FS, TBANDWITH, ATT, FTYPE, WINDOW, RIPPLE)
     addpath('windows')
     addpath('filters')
     % Parâmetros do filtro
-    fc1 = str2num(FC1);
-    fc2 = str2num(FC2);
-    fs = str2num(FS);
-    transition_band_width = str2num(TBANDWITH);
-    ripple = str2double(RIPPLE);
-    attenuation = str2num(ATT);
+    fc1 = FC1;
+    fc2 = FC2;
+    fs = FS;
+    transition_band_width = (TBANDWITH);
+    attenuation = (ATT);
     windowchoice = WINDOW;
+    ripple = RIPPLE;
     
     % Tipo do filtro
     % lowpass, highpass, bandpass, bandstop
