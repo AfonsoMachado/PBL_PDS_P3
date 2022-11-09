@@ -1,4 +1,4 @@
-function main_init(FC1, FC2, FS, TBANDWITH, ATT, FTYPE, WINDOW, RIPPLE)
+function feedback = main_init(FC1, FC2, FS, TBANDWITH, ATT, FTYPE, WINDOW, RIPPLE)
     addpath('windows')
     addpath('filters')
     % Parâmetros do filtro
@@ -18,15 +18,21 @@ function main_init(FC1, FC2, FS, TBANDWITH, ATT, FTYPE, WINDOW, RIPPLE)
     % de corte e da banda de transição
     [~, ~, discrete_cutoff1, discrete_bandwidth] = discrete_frequencies(fc1, transition_band_width, fs);
     [~, ~, discrete_cutoff2, ~] = discrete_frequencies(fc2, transition_band_width, fs);
+
+    % Calcula a atenuação para escolha da janela com base no ripple na
+    % faixa de passagem ou atenuação na faixa de rejeição
+    attenuation = calculate_attenuation(attenuation, ripple);
     
     if attenuation < 0 || attenuation > 74
-        disp('Especificações não suportadas');
+        feedback = 'Especificações não suportadas';
     else
+
+        disp(attenuation);
+        disp(discrete_bandwidth);
+        disp(windowchoice)
         
         % Definindo o tamanho de M e escolhendo a janela
         [window, M, win_name] = window_choice(attenuation, discrete_bandwidth, windowchoice);
-    
-        n = 0:1:M;
     
         switch filter_type
             case 'Passa-Baixa'
@@ -38,6 +44,8 @@ function main_init(FC1, FC2, FS, TBANDWITH, ATT, FTYPE, WINDOW, RIPPLE)
             case 'Rejeita-Faixa'
                 hdn = band_stop_filter(fc1, discrete_cutoff1, fc2, discrete_cutoff2, M, fs);
         end
+
+        feedback = 'Sucesso!';
     
         % Truncamento
         hn = hdn .* window;
