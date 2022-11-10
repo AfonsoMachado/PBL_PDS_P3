@@ -7,7 +7,7 @@ fc2 = 2500;
 fs = 8000;
 transition_band_width = 500;
 ripple = 0.1;
-attenuation = 30;
+attenuation = 50;
 windowchoice = 'Auto (Padrão)';
 
 % Tipo do filtro

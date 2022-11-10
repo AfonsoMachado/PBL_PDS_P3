@@ -26,10 +26,6 @@ function feedback = main_init(FC1, FC2, FS, TBANDWITH, ATT, FTYPE, WINDOW, RIPPL
     if attenuation < 0 || attenuation > 74
         feedback = 'Especificações não suportadas';
     else
-
-        disp(attenuation);
-        disp(discrete_bandwidth);
-        disp(windowchoice)
         
         % Definindo o tamanho de M e escolhendo a janela
         [window, M, win_name] = window_choice(attenuation, discrete_bandwidth, windowchoice);
