@@ -6,8 +6,8 @@ fc1 = 1750;
 fc2 = 2500;
 fs = 8000;
 transition_band_width = 500;
-ripple = 0.1;
-attenuation = 50;
+ripple = 0.75;
+attenuation = 20;
 windowchoice = 'Auto (Padrão)';
 
 % Tipo do filtro
@@ -18,6 +18,10 @@ filter_type = 'lowpass';
 % de corte e da banda de transição
 [~, ~, discrete_cutoff1, discrete_bandwidth] = discrete_frequencies(fc1, transition_band_width, fs);
 [~, ~, discrete_cutoff2, ~] = discrete_frequencies(fc2, transition_band_width, fs);
+
+% Calcula a atenuação para escolha da janela com base no ripple na
+    % faixa de passagem ou atenuação na faixa de rejeição
+    attenuation = calculate_attenuation(attenuation, ripple);
 
 if attenuation < 0 || attenuation > 74
     disp('Especificações não suportadas');
