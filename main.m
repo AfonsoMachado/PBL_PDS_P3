@@ -2,12 +2,12 @@ addpath('windows')
 addpath('filters')
 
 % Parâmetros do filtro
-fc1 = 1750;
+fc1 = 1500;
 fc2 = 2500;
-fs = 8000;
+fs = 10000;
 transition_band_width = 500;
-ripple = 0.75;
-attenuation = 20;
+ripple = 0.1;
+attenuation = 50;
 windowchoice = 'Auto (Padrão)';
 
 % Tipo do filtro
@@ -45,6 +45,15 @@ else
 
     % Truncamento
     hn = hdn .* window;
+
+    v_hn = hn;
+
+  for i = 1:length(hn)
+    %vetorhnString = ['h(',num2str((i)),') = ', num2str(v_hn(i)), ';'];
+    vetorhnString = ['h[',num2str((i-1)),'] = ', num2str(v_hn(i)), ';'];
+                    
+    disp(vetorhnString)
+   end
 
     % Filtro
     figure('Name', 'Projeto do filtro por janelamento');

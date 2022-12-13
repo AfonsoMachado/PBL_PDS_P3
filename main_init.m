@@ -45,6 +45,15 @@ function feedback = main_init(FC1, FC2, FS, TBANDWITH, ATT, FTYPE, WINDOW, RIPPL
     
         % Truncamento
         hn = hdn .* window;
+
+        v_hn = hn;
+
+        for i = 1:length(hn)
+            %vetorhnString = ['h(',num2str((i)),') = ', num2str(v_hn(i)), ';'];
+            vetorhnString = ['h[',num2str((i-1)),'] = ', num2str(v_hn(i)), ';'];
+                        
+            disp(vetorhnString)
+        end
     
         % Filtro
         figure('Name', 'Projeto do filtro por janelamento');
